@@ -1,6 +1,6 @@
-const { login } = require('../server/controllers/auth'); 
-const User = require('../server/models/User'); 
-const bcrypt = require('bcrypt');
+import { login } from './controllers/auth.js';
+import User from './models/User.js';
+import bcrypt from 'bcrypt';
 
 describe('Test login function', () => {
   let existingUser;

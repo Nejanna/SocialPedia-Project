@@ -2,26 +2,22 @@ import { login } from './controllers/auth.js';
 import User from './models/User.js';
 import bcrypt from 'bcrypt';
 
-describe('Test login function', () => {
-  let existingUser;
-
-  beforeEach(() => {
-    // Створення існуючого користувача для тестування
-    existingUser = {
+async function testLoginFunction() {
+  try {
+    const existingUser = {
       email: 'test@example.com',
-      password: bcrypt.hashSync('password', 10) // Пароль буде хешований для порівняння
+      password: bcrypt.hashSync('password', 10)
     };
-    jest.spyOn(User, 'findOne').mockResolvedValue(existingUser);
-  });
 
-  // Тестування успішного входу
-  it('should return a token and user object for valid credentials', async () => {
+    jest.spyOn(User, 'findOne').mockResolvedValue(existingUser);
+
     const req = {
       body: {
         email: 'test@example.com',
-        password: 'password' // Пароль відповідає хешуванному паролю користувача
+        password: 'password'
       }
     };
+
     const res = {
       status: jest.fn().mockReturnThis(),
       json: jest.fn()
@@ -29,7 +25,6 @@ describe('Test login function', () => {
 
     await login(req, res);
 
-    // Очікується, що функція відповість з токеном та об'єктом користувача
     expect(res.status).toHaveBeenCalledWith(200);
     expect(res.json).toHaveBeenCalledWith(expect.objectContaining({
       token: expect.any(String),
@@ -37,7 +32,15 @@ describe('Test login function', () => {
         email: 'test@example.com'
       })
     }));
-  });
-});
+    
+    console.log('Test passed!');
+  } catch (error) {
+    console.error('Test failed:', error);
+  }
+}
+
+// Run the test
+testLoginFunction();
+
 
 

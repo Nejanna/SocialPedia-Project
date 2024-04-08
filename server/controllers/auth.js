@@ -52,9 +52,9 @@ export const login = async (req, res) => {
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET); // створення JWT токену з ідентифікатором користувача
     delete user.password;
-    res.status(200).json({ token, user }); // відправлення відповіді з токеном та об'єктом користувача
+    return res.status(200).json({ token, user }); // відправлення відповіді з токеном та об'єктом користувача
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    return res.status(500).json({ error: err.message });
   }
 };
 

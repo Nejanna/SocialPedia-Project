@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="1" failures="0" errors="0" time="11.652">
+  <testsuite name="login function" errors="0" failures="0" skipped="0" timestamp="2024-04-09T08:27:41" time="11.488" tests="1">
+    <testcase classname="login function should return a token and user object upon successful login" name="login function should return a token and user object upon successful login" time="10.026">
+    </testcase>
+  </testsuite>
+</testsuites>

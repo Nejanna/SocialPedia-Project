@@ -47,7 +47,6 @@
       [
         "jest-junit",
         {
-          "outputDirectory": "./reports",
           "outputName": "jest-junit.xml"
         }
       ]

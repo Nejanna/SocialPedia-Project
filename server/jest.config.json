@@ -1,0 +1,12 @@
+{
+  "collectCoverage": false,
+  "reporters": [
+    "default",
+    [
+      "jest-junit",
+      {
+        "outputName": "jest-junit.xml"
+      }
+    ]
+  ]
+}
